@@ -21,6 +21,18 @@ export const ChessList=()=>{
             ):(
                 <div>
                     <h2>Sakkozók</h2>
+                    {chesses.map(chess,index)=>(
+                        <div className="card col-sm3 d-inline-block m-1 p-2" key={index}>
+                            <p className="text-dark">Sakkozó neve: {chess.name}</p>
+                            <p className="text-dark">Születési év: {chess.birth_date}</p>
+                            <p className="text-danger">Megnyert vilagbajnokságai: {chess.world_ch_won}</p>
+                            <div className="card-body">
+                                <Link to={chess.profile_url}>Profil link</Link>
+                                <img src={chess.image_url ? chess.image_url:"https://placeholder.com/400x800"} 
+                                style={{width:"200"}} className="img-fluid" alt={chess.name}></img>
+                                
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
