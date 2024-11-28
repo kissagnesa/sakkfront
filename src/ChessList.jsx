@@ -7,12 +7,21 @@ export const ChessList=()=>{
     const [isPending,setPending]=useState(false);
 
     useEffect(()=> {
-        setPending(true);
-        fetch ("https://chess.sulla.hu/chess")
-        .then ((valasz)=>valasz.json())
-        .then((sakkosok)=>setChesses(sakkosok))
-        .cath((hiba)=>console.log(hiba))
-        .finally(()=>setPending(false)); //a finally ág mindenképp lefut a promise-ok közül
+        const fetchData=async()()=>{
+            setPending(true);
+            try{
+                const valasz=await axios.get("https://chess.sulla.hu/chess");
+                setChess(valasz.data);
+            }
+            catch(error){
+                console.log("Hiba a lekérésben: ", error)
+            }
+            finally{
+                setPending(false);
+            };
+            fetchData();
+        }
+       
     }, []);
 
     return(
