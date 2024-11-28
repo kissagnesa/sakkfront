@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, NavLink, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ChessList } from './ChessList';
-import {ChessSingle} from './ChessSingle';
-
+import { ChessSingle } from './ChessSingle';
+import { ChessMod } from './ChessMod';
+import { ChessCreate} from './ChessCreate';
+import { ChessDel} from './ChessDel';
 
 export const App=()=> {
   return (
@@ -21,7 +23,10 @@ export const App=()=> {
       </nav>
       <Routes>
         <Route path="/" element={<ChessList />} />
-        <Route path='/chess/:chessId' element ={<ChessSingle/>}/>
+        <Route path="/chess/:chessId" element={<ChessSingle />} />
+        <Route path="/chess-mod/:chessId" element={<ChessMod />} />
+        <Route path="/chess-create" element={<ChessCreate />} />
+        <Route path="/chess-del/:chessId" element={<ChessDel />} />
       </Routes>
     </Router>
   );
