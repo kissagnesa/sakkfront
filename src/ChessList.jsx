@@ -25,25 +25,31 @@ export const ChessList=()=>{
     }, []);
 
     return(
-        <div className="p-5 m-auto text-center content bg-ivory">
+        <div className="container mt-5">
+            <h2>Sakkozók</h2>
             {isPending ? (
                 <div className="spinner-border text-danger"></div>
             ):(
-                <div>
-                    <h2>Sakkozók</h2>
+                <div className="row row-cols-1 row-cols-md-3 g-2">
+                    
                     {chesses.map(chess,index)=>(
-                        <div className="card col-sm3 d-inline-block m-1 p-2" key={index}>
-                            <p className="text-dark">Sakkozó neve: {chess.name}</p>
-                            <p className="text-dark">Születési év: {chess.birth_date}</p>
-                            <p className="text-danger">Megnyert vilagbajnokságai: {chess.world_ch_won}</p>
-                            <div className="card-body">
-                                <Link to={chess.profile_url}>Profil link</Link>
+                        <div className="col" key={index}></div>
+                        <div className="card h-100" key={index}>
+                            <div className="text-dark"><b>Sakkozó neve: <br></br> </b> {chess.name}</div>
+                            <div className="text-dark">Születési év: {chess.birth_date}</div>
+                            <div className="text-danger">Megnyert vilagbajnokságai: {chess.world_ch_won}</div>
+                            <div className="card-body d-flex flex-column align-items-center">
+                                <Link to={chess.profile_url} className="fs-6 btn btn-success" target="_blank">Profil link</Link>
                                 <img src={chess.image_url ? chess.image_url:"https://placeholder.com/400x800"} 
                                 style={{width:"200"}} className="img-fluid" alt={chess.name}></img>
                                 
                         </div>
-                    ))}
-                </div>
+                        <div className="text-center">
+                            <Link to={"/chess/" + chess.id}><i className="bi bi-text-paragraph fs-6 btn btn-primary"></i></Link>   
+                            <Link to={"/chess-mod/" + chess.id}><i className="bi bi-pencil-square fs-6 btn btn-warning"></i></Link>   
+                            <Link to={"/chess-del/" + chess.id}><i className="bi bi-trash3 fs-6 btn btn-danger"></i></Link><br /><br />
+                            </div>
+                   </div>
             )}
         </div>
     )
