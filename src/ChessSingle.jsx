@@ -5,6 +5,7 @@ import axios from 'axios';
 export const ChessSingle=()=>{
     const params=useParams();
     const id = params.chessId;
+    //const {chessId} = useParams(); => ez egy új felírás, több tábla esetén használandó
     const [chess, setChess]=useState({});
     const [isPending, setPending]=useState(false);
 
@@ -43,9 +44,9 @@ return(
                        </Link><br/>
                     </div>
                     <div className="text-center">
-                    <Link to={"/chess/" + chess.id}><i className="bi bi-text-paragraph fs-6 btn btn-primary"></i></Link>&nbsp;&nbsp;&nbsp;
-                    <Link to={"/chess-mod/" + chess.id}><i className="bi bi-pencil-square fs-6 btn btn-warning"></i></Link>&nbsp;&nbsp;&nbsp;
-                    <Link to={"/chess-del/" + chess.id}><i className="bi bi-trash3 fs-6 btn btn-danger"></i></Link><br /><br />
+                    <Link to={"/"}><i className="bi bi-backspace btn btn-primary"></i></Link>&nbsp;&nbsp;&nbsp;
+                    <Link to={"/" + chess.id}><i className="bi bi-pencil-square fs-6 btn btn-warning"></i></Link>&nbsp;&nbsp;&nbsp;
+                    <Link to={"/chess-del/" + chess.id}><i className="bi bi-trash3 fs-6 btn btn-danger"></i></Link>&nbsp;&nbsp;&nbsp;<br /><br />
                     </div>
                 </div>
                 </div>

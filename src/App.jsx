@@ -2,9 +2,10 @@ import { BrowserRouter as Router, NavLink, Routes, Route } from 'react-router-do
 import './App.css';
 import { ChessList } from './ChessList';
 import { ChessSingle } from './ChessSingle';
-import { ChessMod } from './ChessMod';
 import { ChessCreate} from './ChessCreate';
 import { ChessDel} from './ChessDel';
+import { ChessMod } from './ChessMod';
+
 
 export const App=()=> {
   return (
