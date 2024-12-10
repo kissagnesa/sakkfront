@@ -9,25 +9,25 @@ export const ChessMod = () => {
     const [chess, setChess] = useState({
         name: '',
         birth_date: '',
-        world_ch_won: 0,
+        world_ch_won: '',
         profile_url: '',
         image_url: ''
 });
 
     useEffect(() => {
-        const fetchChess = async () => {
+        const fetchData = async () => {
             try { 
                 const valasz = await axios.get("https://chess.sulla.hu/chess/" + id);
                 setChess(valasz.data);
             }
             catch (error) {
-                console.log("Hiba a lekérdezésben: ", error);
+                alert("Hiba a lekérdezésben: ", error);
             }
         }   
-        fetchChess();
+        fetchData();
     }, [id]);
 
-const handleInputChange = event => {
+const handleInputChange = (event) => {
     const { name, value } = event.target;
     setChess(prevState => ({
         ...prevState,
