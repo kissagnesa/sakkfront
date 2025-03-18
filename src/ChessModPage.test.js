@@ -4,10 +4,12 @@ import { ChessModPage } from "./ChessModPage";
 import '@testing-library/jest-dom';
 import { data } from "react-router-dom"; 
 import axios from "axios";  
+
 jest.mock("react-router-dom", () => ({ // a react-router-dom mock-olása
     ...jest.requireActual("react-router-dom"),
     useNavigate: jest.fn(),
 }));
+
 jest.mock('axios'); // mockoljuk az axios-et
 
 describe("Renderelés", () => {
